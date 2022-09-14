@@ -190,24 +190,34 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-// void ThreeDimensArray (int[,,] cube)
-// {
-//     int num = 10;
-//     for (int k = 0; k < cube.GetLength(0); k++)
-//     {
-//         num += 5;
-//         for (int j = 0; j < cube.GetLength(1); j++)
-//         {
-//             num += 3;
-//             for (int i = 0; i < cube.GetLength(2); i++)
-//             {
-//                 num += 9;
-//                 cube[k, i, j] = num;
-//                 System.Console.Write($"{k}, {i}, {j} - {cube[k, i, j]}\t");
-//             }
-//             System.Console.WriteLine();
-//         }
-//     }
-// }
-// int[,,] array = new int[2, 2, 2];
-// ThreeDimensArray(array);
+void ThreeDimensArray (int[,,] cube)
+{
+    int num = 1;
+    for (int k = 0; k < cube.GetLength(0); k++)
+    {
+        num += 5;
+        for (int j = 0; j < cube.GetLength(1); j++)
+        {
+            num += 3;
+            for (int i = 0; i < cube.GetLength(2); i++)
+            {
+                num += 9;
+                cube[k, i, j] = num;
+                System.Console.Write($"{k}, {i}, {j} - {cube[k, i, j]}\t");
+            }
+            System.Console.WriteLine();
+        }
+    }
+}
+int[,,] array = new int[2, 2, 2];
+ThreeDimensArray(array);
+
+
+// Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+// Например, на выходе получается вот такой массив:
+// 01 02 03 04
+// 12 13 14 05
+// 11 16 15 06
+// 10 09 08 07
+
+
