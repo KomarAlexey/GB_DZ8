@@ -190,27 +190,27 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-void ThreeDimensArray (int[,,] cube)
-{
-    int num = 1;
-    for (int k = 0; k < cube.GetLength(0); k++)
-    {
-        num += 5;
-        for (int j = 0; j < cube.GetLength(1); j++)
-        {
-            num += 3;
-            for (int i = 0; i < cube.GetLength(2); i++)
-            {
-                num += 9;
-                cube[k, i, j] = num;
-                System.Console.Write($"{k}, {i}, {j} - {cube[k, i, j]}\t");
-            }
-            System.Console.WriteLine();
-        }
-    }
-}
-int[,,] array = new int[2, 2, 2];
-ThreeDimensArray(array);
+// void ThreeDimensArray (int[,,] cube)
+// {
+//     int num = 1;
+//     for (int k = 0; k < cube.GetLength(0); k++)
+//     {
+//         num += 5;
+//         for (int j = 0; j < cube.GetLength(1); j++)
+//         {
+//             num += 3;
+//             for (int i = 0; i < cube.GetLength(2); i++)
+//             {
+//                 num += 9;
+//                 cube[k, i, j] = num;
+//                 System.Console.Write($"{k}, {i}, {j} - {cube[k, i, j]}\t");
+//             }
+//             System.Console.WriteLine();
+//         }
+//     }
+// }
+// int[,,] array = new int[2, 2, 2];
+// ThreeDimensArray(array);
 
 
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
@@ -221,3 +221,57 @@ ThreeDimensArray(array);
 // 10 09 08 07
 
 
+int Prompt(string message)
+{
+    System.Console.Write(message);
+    int num = Convert.ToInt32(Console.ReadLine()!);
+    return num;
+}
+
+int [,] FillWithSpiral(int size)
+{
+    int elements = size * size;
+    int countElement = 0;
+    int begin = 0;
+    int [,] array = new int[size, size];
+    while (countElement < elements)
+    {
+        for (int i = begin; i < size; i++)
+        {
+            countElement++;
+            array[begin, i] = countElement;
+        }
+        for (int i = begin + 1; i < size; i++)
+        {
+            countElement++;
+            array[i, size - 1] = countElement;
+        }
+        for (int i = size - 2; i >= begin; i--)
+        {
+            countElement++;
+            array[size - 1, i] = countElement;
+        }
+        for (int i = size - 2; i >= begin + 1; i--)
+        {
+            countElement++;
+            array[i, begin] = countElement;
+        }
+        size -= 1;
+        begin += 1;
+    }
+    return array;
+}
+
+void PrintMatrix(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            System.Console.Write($"{matrix[i, j]}\t");
+        }
+        System.Console.WriteLine();
+    }
+}
+int[,] matrix = FillWithSpiral(Prompt("Введите размер квадратной матрицы: "));
+PrintMatrix(matrix);
